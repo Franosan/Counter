@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: sans-serif;
+  color: #000;
+}
+
+.container {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.heading {
+  font-size: 6rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+.counter {
+  font-size: 8rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn-sub {
+  background-color: #932c00;
+  font-weight: bold;
+}
+
+.btn-res {
+  background-color: #666;
+}
+
+.btn-add {
+  background-color: #278200;
+  font-weight: bold;
+}
