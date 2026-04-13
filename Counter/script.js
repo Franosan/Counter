@@ -1,36 +1,64 @@
 "use strict";
 
-const btnSub = document.querySelector(".btn-sub");
-const btnRes = document.querySelector(".btn-res");
-const btnAdd = document.querySelector(".btn-add");
-const btn = document.querySelector(".btn");
-let counter = document.querySelector(".counter");
-let number = 0;
+const numberEl = document.querySelector(".number");
+const decreaseEl = document.querySelector(".btn-dec");
+const resetEl = document.querySelector(".btn-res");
+const increaseEl = document.querySelector(".btn-inc");
+const inputEl = document.querySelector(".input");
 
-btnSub.addEventListener("click", function () {
-  number--;
-  counter.textContent = number;
-  colorChange();
+const state = {
+  number: 0,
+
+  decrease() {
+    this.number--;
+    numberEl.textContent = this.number;
+    this.colorChange();
+  },
+
+  reset() {
+    this.number = 0;
+    numberEl.textContent = this.number;
+    this.colorChange();
+  },
+
+  increase() {
+    this.number++;
+    numberEl.textContent = this.number;
+    this.colorChange();
+  },
+
+  colorChange() {
+    if (this.number < 0) {
+      numberEl.style.color = "#932c00";
+    } else if (this.number > 0) {
+      numberEl.style.color = "#278200";
+    } else {
+      numberEl.style.color = "#354853";
+    }
+  },
+
+  setInput(value) {
+    this.number = value;
+    numberEl.textContent = value;
+    this.colorChange();
+    if (value === "") {
+      numberEl.textContent = 0;
+    }
+  },
+};
+
+decreaseEl.addEventListener("click", () => {
+  state.decrease();
 });
 
-btnAdd.addEventListener("click", function () {
-  number++;
-  counter.textContent = number;
-  colorChange();
+resetEl.addEventListener("click", () => {
+  state.reset();
 });
 
-btnRes.addEventListener("click", function () {
-  number = 0;
-  counter.textContent = number;
-  colorChange();
+increaseEl.addEventListener("click", () => {
+  state.increase();
 });
 
-function colorChange() {
-  if (number < 0) {
-    counter.style.color = "#932c00";
-  } else if (number > 0) {
-    counter.style.color = "#278200";
-  } else {
-    counter.style.color = "#000";
-  }
-}
+inputEl.addEventListener("input", (e) => {
+  state.setInput(e.target.value);
+});
